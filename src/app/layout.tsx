@@ -6,6 +6,7 @@ import PWAInstallPrompt from "./PWAInstallation";
 import { InstallPrompt } from "@/components/InstallPrompt";
 import ErudaDevtool from "@/components/DevtoolLogs";
 import { getUserInfo } from "@/lib/getUser.server";
+import { Suspense } from "react";
 
 const vazir = Vazirmatn({
   variable: "--font-vazir",
@@ -44,9 +45,12 @@ export default async function RootLayout({
 
       <body className={`${vazir.className} min-h-full pb-[20px]`}>
         <PWAInstallPrompt />
-        <ErudaDevtool />
+
+        {/* <ErudaDevtool /> */}
         <main className="max-w-[460px] flex justify-center mx-auto min-h-full px-[20px]">
-          <InstallPrompt />
+          <Suspense>
+            <InstallPrompt />
+          </Suspense>
           {children}
         </main>
       </body>

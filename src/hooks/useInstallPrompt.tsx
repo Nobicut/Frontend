@@ -8,10 +8,11 @@ export function useInstallPrompt() {
   const [isSupported, setIsSupported] = useState(false);
   const [isApple, setIsApple] = useState(false);
 
-  const ua = window.navigator.userAgent.toLowerCase();
   const isInstalledBefore = useIsPWAInstalled();
 
   useEffect(() => {
+    const ua = window.navigator.userAgent.toLowerCase();
+
     const isIOS = /iphone|ipad|ipod|mac/.test(ua);
 
     setIsApple(isIOS);
