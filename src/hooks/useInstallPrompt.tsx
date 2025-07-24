@@ -8,7 +8,7 @@ export function useInstallPrompt() {
   const [isSupported, setIsSupported] = useState(false);
   const [isApple, setIsApple] = useState(false);
 
-  const isInstalledBefore = useIsPWAInstalled();
+  const [isInstalledBefore, setIsInstallBefore] = useIsPWAInstalled();
 
   useEffect(() => {
     const ua = window.navigator.userAgent.toLowerCase();
@@ -36,6 +36,8 @@ export function useInstallPrompt() {
   }, []);
 
   const promptInstall = async () => {
+    console.log("rebder");
+
     if (deferredPrompt && "prompt" in deferredPrompt) {
       // @ts-expect-error unknown
       deferredPrompt.prompt();
@@ -43,6 +45,9 @@ export function useInstallPrompt() {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const { outcome } = await (deferredPrompt as any).userChoice;
       console.log("Install outcome:", outcome);
+      if (outcome === "accepted") {
+        setIsInstallBefore(true);
+      }
       setDeferredPrompt(null);
     }
   };

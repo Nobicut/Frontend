@@ -15,7 +15,8 @@ import { Button } from "./ui/button";
 export const InstallPrompt = () => {
   const { isSupported, promptInstall, isInstalledBefore, isApple } =
     useInstallPrompt();
-  const [open, setOpen] = useState(() => isInstalledBefore);
+  console.log(isInstalledBefore);
+  const [open, setOpen] = useState(() => false);
 
   useEffect(() => {
     if (isInstalledBefore) {
@@ -24,6 +25,7 @@ export const InstallPrompt = () => {
       setOpen(true);
     }
   }, [isInstalledBefore]);
+console.log({isSupported,isApple});
 
   if (isApple && !isSupported) {
     return (
