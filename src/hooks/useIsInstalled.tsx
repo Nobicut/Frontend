@@ -1,7 +1,10 @@
-"use client"
-import { useEffect, useState } from "react";
+"use client";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
-export function useIsPWAInstalled() {
+export function useIsPWAInstalled(): [
+  boolean,
+  Dispatch<SetStateAction<boolean>>
+] {
   const [isInstalled, setIsInstalled] = useState(false);
 
   useEffect(() => {
@@ -20,5 +23,5 @@ export function useIsPWAInstalled() {
     return () => window.removeEventListener("load", check);
   }, []);
 
-  return isInstalled;
+  return [isInstalled, setIsInstalled];
 }
