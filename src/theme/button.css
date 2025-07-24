@@ -1,0 +1,18 @@
+@tailwind utilities;
+
+@layer components {
+  .btn {
+    @apply rounded-[5px] cursor-pointer h-[60px];
+  }
+  .btn-error {
+    @apply bg-gray-400 opacity-45 !cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply bg-[#191A1A] text-white;
+  }
+
+  .btn-secondary {
+    @apply border-[1px] border-[solid] border-[#191A1A] text-[#191A1A];
+  }
+}
